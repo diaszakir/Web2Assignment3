@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User List</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>User List</h1>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.age %></td>
+          <td>
+            <a href="/edit/<%= user._id %>">Edit</a>
+            <form
+              action="/delete/<%= user._id %>"
+              method="POST"
+              style="display: inline"
+            >
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <a href="/add">Add New User</a>
+
+    <form action="/users/search" method="GET">
+      <input
+        type="text"
+        name="query"
+        placeholder="Search by name or email"
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+  </body>
+</html>

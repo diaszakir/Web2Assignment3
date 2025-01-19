@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Search Users</h1>
+
+    <!-- Search Form -->
+    <form action="/users/search" method="GET">
+      <input
+        type="text"
+        name="query"
+        placeholder="Search by name or email"
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Search Results -->
+    <% if (users && users.length > 0) { %>
+    <h2>Search Results for: <%= query %></h2>
+    <ul>
+      <% users.forEach(user => { %>
+      <li>
+        <strong><%= user.name %></strong>: <%= user.email %> (Age: <%= user.age
+        %>)
+      </li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <p>No users found for "<%= query %>"</p>
+    <% } %>
+
+    <a href="/">Go back to the home page</a>
+  </body>
+</html>
