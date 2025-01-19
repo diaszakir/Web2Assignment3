@@ -1,26 +1,26 @@
-## Web Technologies 2
+# Web Technologies 2
 
-# Assignment 3
+## Assignment 3
 
-# Dias Zakir SE-2320
+### Dias Zakir SE-2320
 
 ---
 
-# How to install and launch project?
+## How to install and launch project?
 
-# Step 1
+### Step 1
 
 Clone from repository by command:
 
 `git clone https://github.com/diaszakir/Web2Assignment3`
 
-# Step 2
+### Step 2
 
 Install packages:
 
 `npm install express mongoose method-override`
 
-# Step 3
+### Step 3
 
 Start the server with command in terminal
 
