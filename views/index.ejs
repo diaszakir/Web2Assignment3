@@ -41,12 +41,21 @@
 
     <a href="/add">Add New User</a>
 
+    <h1>Search</h1>
+
     <form action="/users/search" method="GET">
+      <input type="text" name="query" placeholder="Search by name or email" />
+      <button type="submit">Search</button>
+    </form>
+
+    <h1>Sort</h1>
+
+    <form action="/users/sort" method="GET">
       <input
         type="text"
-        name="query"
-        placeholder="Search by name or email"
-        required
+        name="letter"
+        maxlength="1"
+        placeholder="Search by first letter of name"
       />
       <button type="submit">Search</button>
     </form>

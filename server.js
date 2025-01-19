@@ -86,6 +86,29 @@ app.get("/users/search", async (req, res) => {
   }
 });
 
+// Route for Sorting Users
+app.get("/users/sort", async (req, res) => {
+  const { letter } = req.query; // Get the 'letter' from query params (undefined if not present)
+
+  try {
+    let users;
+
+    // If 'letter' is provided, search users whose names start with that letter
+    if (letter) {
+      users = await User.find({
+        name: { $regex: `^${letter}`, $options: "i" }, // Case-insensitive match
+      });
+    } else {
+      users = await User.find(); // If no letter is provided, return all users
+    }
+
+    // Pass 'letter' as part of the response, set to empty string if undefined
+    res.render("sort", { users, letter: letter || "" }); // Default empty string if 'letter' is undefined
+  } catch (err) {
+    res.status(500).send("Error fetching users");
+  }
+});
+
 // Start Server
 const PORT = 3000;
 app.listen(PORT, () =>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sort Users</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h1>Sort Users by Name or Age</h1>
+
+    <!-- Form for Filtering by Name or Age -->
+    <form action="/users/sort" method="GET">
+      <input
+        type="text"
+        name="letter"
+        value="<%= letter %>"
+        maxlength="1"
+        placeholder="A, B, C..."
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- User Table -->
+    <h2>User List</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (users && users.length > 0) { %> <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.age %></td>
+        </tr>
+        <% }); %> <% } else { %>
+        <tr>
+          <td colspan="3">No users found matching the filter criteria.</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <a href="/">Back to User List</a>
+  </body>
+</html>
